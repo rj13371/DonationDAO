@@ -17,7 +17,31 @@ const FormPreview = ({ initialValues, goBack }) => {
     defaultMatches: true,
   });
 
-  const preview = URL.createObjectURL(initialValues.image);
+  console.log(initialValues);
+
+  const preview = initialValues.image
+    ? URL.createObjectURL(initialValues.image)
+    : '';
+
+  const VidPreview = () => (
+    <Box>
+      <iframe
+        width="300"
+        height="300"
+        src={
+          'https://www.youtube.com/embed/' +
+          initialValues.youtube.substring(
+            initialValues.youtube.length - 11,
+            initialValues.youtube.length,
+          )
+        }
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </Box>
+  );
 
   const GridItemHeadlineBlock = () => (
     <Box>
@@ -94,6 +118,7 @@ const FormPreview = ({ initialValues, goBack }) => {
                 borderRadius={5}
                 src={initialValues.image ? preview : ''}
               ></Box>
+              <VidPreview />
               <Countdown initialValues={initialValues} />
             </Box>
           </Box>

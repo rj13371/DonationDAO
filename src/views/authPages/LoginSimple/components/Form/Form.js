@@ -10,6 +10,7 @@ import FormDetails from './FormDetails';
 import FormStart from './FormStart';
 import FormFinal from './FormFinal';
 import FormPreview from './FormPreview';
+import { Link } from 'react-router-dom';
 
 const validationSchema = yup.object({
   address: yup
@@ -22,7 +23,7 @@ const validationSchema = yup.object({
     .string()
     .required('Please specify your crowdfunding title')
     .min(5, 'The title should have at minimum length of 5'),
-  goal: yup.string().required('Please specify your donation goal'),
+  goal: yup.number().required('Please specify your donation goal'),
 });
 
 const Form = () => {
@@ -75,6 +76,19 @@ const Form = () => {
         <Typography color="text.secondary">
           First we need some details
         </Typography>
+        <Box marginBottom={{ xs: 1, sm: 0 }}>
+          <Typography variant={'subtitle2'}>
+            Already have a crowdfunding page?{' '}
+            <Link
+              component={'a'}
+              color={'primary'}
+              href={'/dashboard'}
+              underline={'none'}
+            >
+              Go to your dashboard
+            </Link>
+          </Typography>
+        </Box>
       </Box>
       {formStep === 1 && (
         <FormStart initialValues={initialValues} onSubmit={onSubmit} />

@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 
 export default function FormDetails(props) {
   const { formik, goBack } = props;
@@ -44,7 +43,7 @@ export default function FormDetails(props) {
         </Grid>
         <Grid item xs={12}>
           <Typography variant={'subtitle2'} sx={{ marginBottom: 2 }}>
-            Enter your crowdfunding goal
+            Enter your crowdfunding goal in USD
           </Typography>
           <TextField
             label="goal *"
@@ -67,19 +66,6 @@ export default function FormDetails(props) {
             maxWidth={600}
             margin={'0 auto'}
           >
-            <Box marginBottom={{ xs: 1, sm: 0 }}>
-              <Typography variant={'subtitle2'}>
-                Already have a crowdfunding page?{' '}
-                <Link
-                  component={'a'}
-                  color={'primary'}
-                  href={'/dashboard'}
-                  underline={'none'}
-                >
-                  Go to your dashboard
-                </Link>
-              </Typography>
-            </Box>
             <Button
               onClick={goBack}
               size={'large'}

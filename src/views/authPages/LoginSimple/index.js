@@ -1,1 +1,1 @@
-export { default } from './LoginSimple';
+export { default } from './CrowdFundDetails';
