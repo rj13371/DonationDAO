@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
@@ -6,9 +6,8 @@ import Divider from '@mui/material/Divider';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
-import { Topbar, Sidebar, Footer } from './components';
+import { Topbar, Footer } from './components';
 import Container from 'common/Container';
-import { pages } from '../navigation';
 
 const HideOnScroll = ({ children }) => {
   const trigger = useScrollTrigger();
@@ -32,15 +31,6 @@ const Main = ({
   paletteType,
 }) => {
   const theme = useTheme();
-  const [openSidebar, setOpenSidebar] = useState(false);
-
-  const handleSidebarOpen = () => {
-    setOpenSidebar(true);
-  };
-
-  const handleSidebarClose = () => {
-    setOpenSidebar(false);
-  };
 
   return (
     <div>
@@ -54,7 +44,6 @@ const Main = ({
         >
           <Container paddingY={{ xs: 1 / 2, sm: 1 }}>
             <Topbar
-              onSidebarOpen={handleSidebarOpen}
               themeMode={themeMode}
               themeToggler={themeToggler}
               setThemePalette={setThemePalette}
@@ -63,12 +52,6 @@ const Main = ({
           </Container>
         </AppBar>
       </HideOnScroll>
-      <Sidebar
-        onClose={handleSidebarClose}
-        open={openSidebar}
-        variant="temporary"
-        pages={pages}
-      />
       <main>
         <Box height={{ xs: 56, sm: 64 }} />
         {children}

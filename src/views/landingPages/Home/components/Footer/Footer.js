@@ -25,7 +25,7 @@ const Footer = () => {
         gutterBottom
         align={'center'}
       >
-        Get started with Webbee today
+        Start a Crowdfund
       </Box>
       <Typography
         variant={'h6'}
@@ -33,8 +33,7 @@ const Footer = () => {
         color={'textSecondary'}
         align={'center'}
       >
-        Build a beautiful, modern website with flexible, fully customizable,
-        atomic Material-UI components.
+        Start your crowdfund for yourself, a friend, or your charity
       </Typography>
       <Box marginTop={3} display={'flex'} justifyContent={'center'}>
         <Button

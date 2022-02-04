@@ -72,7 +72,7 @@ const Footer = () => (
         color="textSecondary"
         gutterBottom
       >
-        &copy; Webbee. 2021, Maccarian. All rights reserved
+        &copy; Donation-Dao. 2021, Donation-Dao. All rights reserved
       </Typography>
       <Typography
         align={'center'}

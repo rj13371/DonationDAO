@@ -7,7 +7,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import RocketIllustration from 'svg/illustrations/Rocket';
+import Globe from 'svg/illustrations/Globe';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const theme = useTheme();
@@ -21,23 +22,38 @@ const Hero = () => {
         <Box data-aos={isMd ? 'fade-right' : 'fade-up'}>
           <Box marginBottom={2}>
             <Typography
-              variant="h2"
+              variant="h1"
               color="textPrimary"
               sx={{
                 fontWeight: 700,
               }}
             >
-              Turn your ideas
+              Donation
               <br />
-              into a{' '}
+              Dao
+            </Typography>
+
+            <Typography
+              variant="h3"
+              color="textPrimary"
+              sx={{
+                fontWeight: 700,
+              }}
+            >
+              Making Crowdfunding
+              <br />
               <Typography
                 color={'primary'}
                 component={'span'}
                 variant={'inherit'}
               >
                 <Typed
-                  strings={['startup.', 'future.', 'success.']}
-                  typeSpeed={80}
+                  strings={[
+                    'censorship-free.',
+                    'decentralized.',
+                    'transparent.',
+                  ]}
+                  typeSpeed={60}
                   loop={true}
                 />
               </Typography>
@@ -50,8 +66,8 @@ const Hero = () => {
               color="textSecondary"
               sx={{ fontWeight: 400 }}
             >
-              Webbee will make your product look modern and professional while
-              saving you precious time.
+              We are a non-biased, decentralized platform for crowdfunding
+              efforts.
             </Typography>
           </Box>
           <Box
@@ -59,19 +75,16 @@ const Hero = () => {
             flexDirection={{ xs: 'column', sm: 'row' }}
             alignItems={{ xs: 'stretched', sm: 'flex-start' }}
           >
-            <Button
-              component={'a'}
-              variant="contained"
-              color="primary"
-              size="large"
-              fullWidth={isMd ? false : true}
-              href={
-                'https://material-ui.com/store/items/webbee-landing-page/'
-              }
-              target={'_blank'}
-            >
-              Purchase now
-            </Button>
+            <Link to="/page-login-simple">
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                fullWidth={isMd ? false : true}
+              >
+                Start a crowdfund
+              </Button>
+            </Link>
             <Box
               marginTop={{ xs: 2, sm: 0 }}
               marginLeft={{ sm: 2 }}
@@ -85,7 +98,7 @@ const Hero = () => {
                 size="large"
                 fullWidth={isMd ? false : true}
               >
-                View documentation
+                How it works
               </Button>
             </Box>
           </Box>
@@ -100,7 +113,7 @@ const Hero = () => {
           alignItems={'center'}
         >
           <Box height={'100%'} width={'100%'} maxHeight={600}>
-            <RocketIllustration width={'100%'} height={'100%'} />
+            <Globe width={'100%'} height={'100%'} />
           </Box>
         </Box>
       </Grid>
