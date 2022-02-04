@@ -1,34 +1,48 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import { CreateCrowdfundContext } from 'context/CreateCrowdfundContext';
+import FormDetails from './FormDetails';
+import FormStart from './FormStart';
+import FormFinal from './FormFinal';
+import FormPreview from './FormPreview';
 
 const validationSchema = yup.object({
-  email: yup
-    .string('Enter your email')
+  address: yup
+    .string('Enter a wallet address')
     .trim()
-    .email('Please enter a valid email address')
-    .required('Email is required.'),
-  password: yup
+    .min(42, 'That is an invalid wallet address')
+    .max(42, 'That is an invalid wallet address')
+    .required('a wallet address is required.'),
+  title: yup
     .string()
-    .required('Please specify your password')
-    .min(8, 'The password should have at minimum length of 8'),
+    .required('Please specify your crowdfunding title')
+    .min(5, 'The title should have at minimum length of 5'),
+  goal: yup.string().required('Please specify your donation goal'),
 });
 
 const Form = () => {
-  const initialValues = {
-    email: '',
-    password: '',
-  };
+  const history = useHistory();
+  const { crowdfundForm, updateForm } = useContext(CreateCrowdfundContext);
+  const [formStep, setFormStep] = useState(1);
+
+  const initialValues = { ...crowdfundForm };
 
   const onSubmit = (values) => {
-    return values;
+    console.log(values);
+    updateForm(values);
+    setFormStep((prev) => prev + 1);
+    if (formStep === 5) {
+      return history.push('/dashboard');
+    }
+  };
+
+  const goBack = () => {
+    setFormStep((prev) => prev - 1);
   };
 
   const formik = useFormik({
@@ -38,7 +52,7 @@ const Form = () => {
   });
 
   return (
-    <Box>
+    <Box data-aos={'fade-down'}>
       <Box marginBottom={4}>
         <Typography
           sx={{
@@ -48,7 +62,7 @@ const Form = () => {
           gutterBottom
           color={'textSecondary'}
         >
-          Login
+          Getting Started
         </Typography>
         <Typography
           variant="h4"
@@ -56,96 +70,29 @@ const Form = () => {
             fontWeight: 700,
           }}
         >
-          Welcome back
+          Create a Crowdfund
         </Typography>
         <Typography color="text.secondary">
-          Login to manage your account.
+          First we need some details
         </Typography>
       </Box>
-      <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={4}>
-          <Grid item xs={12}>
-            <Typography variant={'subtitle2'} sx={{ marginBottom: 2 }}>
-              Enter your email
-            </Typography>
-            <TextField
-              label="Email *"
-              variant="outlined"
-              name={'email'}
-              fullWidth
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Box
-              display="flex"
-              flexDirection={{ xs: 'column', sm: 'row' }}
-              alignItems={{ xs: 'stretched', sm: 'center' }}
-              justifyContent={'space-between'}
-              width={'100%'}
-              marginBottom={2}
-            >
-              <Box marginBottom={{ xs: 1, sm: 0 }}>
-                <Typography variant={'subtitle2'}>
-                  Enter your password
-                </Typography>
-              </Box>
-              <Typography variant={'subtitle2'}>
-                <Link
-                  component={'a'}
-                  color={'primary'}
-                  href={'/page-forgot-password-simple'}
-                  underline={'none'}
-                >
-                  Forgot your password?
-                </Link>
-              </Typography>
-            </Box>
-            <TextField
-              label="Password *"
-              variant="outlined"
-              name={'password'}
-              type={'password'}
-              fullWidth
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-            />
-          </Grid>
-          <Grid item container xs={12}>
-            <Box
-              display="flex"
-              flexDirection={{ xs: 'column', sm: 'row' }}
-              alignItems={{ xs: 'stretched', sm: 'center' }}
-              justifyContent={'space-between'}
-              width={'100%'}
-              maxWidth={600}
-              margin={'0 auto'}
-            >
-              <Box marginBottom={{ xs: 1, sm: 0 }}>
-                <Typography variant={'subtitle2'}>
-                  Don't have an account yet?{' '}
-                  <Link
-                    component={'a'}
-                    color={'primary'}
-                    href={'/page-signup-simple'}
-                    underline={'none'}
-                  >
-                    Sign up here.
-                  </Link>
-                </Typography>
-              </Box>
-              <Button size={'large'} variant={'contained'} type={'submit'}>
-                Login
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
-      </form>
+      {formStep === 1 && (
+        <FormStart initialValues={initialValues} onSubmit={onSubmit} />
+      )}
+
+      {formStep === 2 && <FormDetails formik={formik} goBack={goBack} />}
+
+      {formStep === 3 && (
+        <FormFinal
+          initialValues={initialValues}
+          goBack={goBack}
+          onSubmit={onSubmit}
+        />
+      )}
+
+      {formStep === 4 && (
+        <FormPreview initialValues={initialValues} goBack={goBack} />
+      )}
     </Box>
   );
 };
