@@ -117,7 +117,7 @@ export const pages = [
       },
       {
         title: 'Login Simple',
-        href: '/page-login-simple',
+        href: '/create-crowdfund',
       },
       {
         title: 'Sign Up',

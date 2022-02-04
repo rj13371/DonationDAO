@@ -1,10 +1,13 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import WebbeeLogo from 'svg/logos/Webbee';
+import logo from 'svg/logos/logo.png';
+import IconButton from '@mui/material/IconButton';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { colors } from '@mui/material';
 
 const Footer = () => (
   <Grid container spacing={2}>
@@ -25,7 +28,7 @@ const Footer = () => (
           height={24}
           width={35}
         >
-          <WebbeeLogo height={'100%'} width={'100%'} />
+          <img src={logo} height={40} width={40} />
         </Box>
         <Box display="flex" flexWrap={'wrap'} alignItems={'center'}>
           <Box marginTop={1} marginRight={2}>
@@ -43,24 +46,44 @@ const Footer = () => (
             <Link
               underline="none"
               component="a"
-              href="/docs-introduction"
+              href="/page-faq"
               color="textPrimary"
               variant={'subtitle2'}
             >
-              Documentation
+              FAQ
             </Link>
           </Box>
-          <Box marginTop={1}>
-            <Button
-              variant="outlined"
-              color="primary"
-              component="a"
-              target="blank"
-              href="https://material-ui.com/store/items/webbee-landing-page/"
-              size="small"
+
+          <Box marginTop={1} marginRight={2}>
+            <Link
+              underline={'hover'}
+              href={'https://github.com/rj13371/DonationDAO'}
+              target={'_blank'}
             >
-              Purchase now
-            </Button>
+              <IconButton
+                size={'small'}
+                sx={{
+                  marginRight: 1,
+                  color: colors.blueGrey[200],
+                }}
+              >
+                <GitHubIcon />
+              </IconButton>
+            </Link>
+            <Link
+              underline={'hover'}
+              href={'https://twitter.com/rj13371'}
+              target={'_blank'}
+            >
+              <IconButton
+                size={'small'}
+                sx={{
+                  color: colors.blueGrey[200],
+                }}
+              >
+                <TwitterIcon />
+              </IconButton>
+            </Link>
           </Box>
         </Box>
       </Box>
@@ -80,10 +103,8 @@ const Footer = () => (
         color="textSecondary"
         component={'p'}
       >
-        When you visit or interact with our sites, services or tools, we or our
-        authorised service providers may use cookies for storing information to
-        help provide you with a better, faster and safer experience and for
-        marketing purposes.
+        Powered by Moralis and Polygon. Made for ETHGlobal Road to Web3
+        Hackathon.
       </Typography>
     </Grid>
   </Grid>

@@ -3,7 +3,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <Box>
@@ -36,33 +36,32 @@ const Footer = () => {
         Start your crowdfund for yourself, a friend, or your charity
       </Typography>
       <Box marginTop={3} display={'flex'} justifyContent={'center'}>
-        <Button
-          component={'a'}
-          href={'https://material-ui.com/store/items/webbee-landing-page/'}
-          target={'_blank'}
-          variant="contained"
-          color="primary"
-          size="large"
-          endIcon={
-            <svg
-              width={16}
-              height={16}
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          }
-        >
-          Purchase now
-        </Button>
+        <Link to="/create-crowdfund">
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            endIcon={
+              <svg
+                width={16}
+                height={16}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            }
+          >
+            Start a crowdfund
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

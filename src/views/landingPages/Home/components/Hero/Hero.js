@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Globe from 'svg/illustrations/Globe';
+import logo from 'svg/logos/logo.png';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -75,7 +75,7 @@ const Hero = () => {
             flexDirection={{ xs: 'column', sm: 'row' }}
             alignItems={{ xs: 'stretched', sm: 'flex-start' }}
           >
-            <Link to="/page-login-simple">
+            <Link to="/create-crowdfund">
               <Button
                 variant="contained"
                 color="primary"
@@ -92,7 +92,7 @@ const Hero = () => {
             >
               <Button
                 component={'a'}
-                href={'/docs-introduction'}
+                href={'/page-faq'}
                 variant="outlined"
                 color="primary"
                 size="large"
@@ -112,8 +112,13 @@ const Hero = () => {
           justifyContent={'center'}
           alignItems={'center'}
         >
-          <Box height={'100%'} width={'100%'} maxHeight={600}>
-            <Globe width={'100%'} height={'100%'} />
+          <Box
+            data-aos={isMd ? 'fade-right' : 'fade-up'}
+            height={'100%'}
+            width={'100%'}
+            maxHeight={600}
+          >
+            <img src={logo} height={500} width={500} />
           </Box>
         </Box>
       </Grid>

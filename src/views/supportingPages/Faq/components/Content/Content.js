@@ -72,96 +72,67 @@ const Content = () => {
     <Box>
       <Box marginBottom={6}>
         <FaqGroupItem
-          title={'Basics'}
+          title={'Questions about crowdfunding'}
           items={[
             {
-              title: 'Can I purchase a gift certificate?',
+              title: 'How does Donation DAO work?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'You start by creating a story about the cause you are raising funds for. ',
             },
             {
-              title: 'What is your return policy?',
-              subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+              title: 'How much does it cost to start a Donation Page?',
+              subtitle: 'It is currently free to setup a Donation page.',
             },
             {
-              title: 'Do you sell gift cards?',
+              title: 'What can I raise money for?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'You can choose to raise money for any cause you see fit. Whether that be for a friend, family member, yourself, a complete stranger or a charity organization. We do not moderate or restrict any of the crowdfunds that are posted on Donation DAO. We leave it up to the users to decide which Donation pages are popular and posted to the front of the leaderboards.',
             },
             {
-              title: 'Can I change plans later on?',
+              title: 'Do I need a cryptocurrency wallet to use Donation DAO?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'Yes. You must have a cryptocurrency wallet setup to receive donations. We reccomend setting up a seperate wallet address to the one you regularly use in order to be as transparant as possible to your donors. ',
             },
             {
-              title: 'Is this a subscription service?',
+              title: 'How do I get Donations?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'You can withdraw your crypto to your chosen offramp bank. At anytime you may withdraw your Donations from your wallet. This will be reflected on your public Donation page, as all transactions on the blockchain are public. ',
+            },
+            {
+              title: 'What cryptocurrencies can I receive on my Donation page?',
+              subtitle:
+                'Any ERC20 token on the Polygon network or the Polygon native token is supported. ',
+            },
+            {
+              title: 'Is my country eligable for Donation DAO?',
+              subtitle: 'Yes. Cryptocurrency is beyond borders.',
             },
           ]}
         />
       </Box>
       <Box marginBottom={6}>
         <FaqGroupItem
-          title={'Account & settings'}
+          title={'Questions about the web application'}
           items={[
             {
-              title: 'Can I purchase a gift certificate?',
+              title: 'How do you store our Data?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'We store Data on a Web3 backend service called Moralis.',
             },
             {
-              title: 'What is your return policy?',
+              title: 'Are my donations SAFU on Donation DAO?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'Yes, Donation DAO does not have access to any of your wallet private keys. We are only a frontend platform for crowdfunding causes.',
             },
             {
-              title: 'Do you sell gift cards?',
+              title: 'Is my Data SAFU on Donation DAO?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'We do not store potentially sensitive information like passwords or emails unlike our Web2 competititors. The only information we store on our Databases are the already public Donation pages which are not sensitive parts of Data.',
             },
             {
-              title: 'Can I change plans later on?',
+              title: 'Are you decentralized?',
               subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-            },
-            {
-              title: 'Is this a subscription service?',
-              subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-            },
-          ]}
-        />
-      </Box>
-      <Box>
-        <FaqGroupItem
-          title={'Security'}
-          items={[
-            {
-              title: 'Can I purchase a gift certificate?',
-              subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-            },
-            {
-              title: 'What is your return policy?',
-              subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-            },
-            {
-              title: 'Do you sell gift cards?',
-              subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-            },
-            {
-              title: 'Can I change plans later on?',
-              subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-            },
-            {
-              title: 'Is this a subscription service?',
-              subtitle:
-                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'We are currently migrating to being fully hosted on IPFS, and are using a Web3 backend called Moralis. Decentralization is a spectrum and we are on the farthest reaches of decentralized apps.',
             },
           ]}
         />

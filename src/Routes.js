@@ -343,7 +343,7 @@ const Routes = () => {
       />
       <Route
         exact
-        path="/page-login-simple"
+        path="/create-crowdfund"
         render={(matchProps) => (
           <WithLayout
             {...matchProps}

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import WebbeeLogo from 'svg/logos/Webbee';
+import logo from 'svg/logos/logo.png';
 import Login from 'utils/Moralis/Login';
 
 const Topbar = ({ themeMode, themeToggler }) => {
@@ -17,22 +17,17 @@ const Topbar = ({ themeMode, themeToggler }) => {
       width={'100%'}
     >
       <Box display={'flex'} alignItems={'center'}>
-        {/* <Box marginRight={{ xs: 1, sm: 2 }}>
-          <IconButton onClick={onSidebarOpen} aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-        </Box> */}
         <Box
           display={'flex'}
           alignItems="baseline"
           component="a"
           underline="none"
           href="/"
-          title="webbee"
+          title="donationDAO"
           height={{ xs: 28, md: 32 }}
           width={45}
         >
-          <WebbeeLogo height={'100%'} width={'100%'} />
+          <img src={logo} height={40} width={40} />
         </Box>
       </Box>
       <Box display="flex" alignItems={'center'}>
