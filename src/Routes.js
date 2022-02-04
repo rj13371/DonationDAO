@@ -66,6 +66,7 @@ import {
   Illustrations as IllustrationsView,
   ChangeLog as ChangeLogView,
 } from './views/docs';
+import Crowdfundview from 'views/crowdfund/Crowdfundview';
 const Routes = () => {
   return (
     <Switch>
@@ -527,6 +528,18 @@ const Routes = () => {
           />
         )}
       />
+
+      <Route
+        path="/crowdfund/:id"
+        render={(matchProps) => (
+          <WithLayout
+            {...matchProps}
+            component={Crowdfundview}
+            layout={MainLayout}
+          />
+        )}
+      />
+
       <Route
         exact
         path="/page-not-found"
