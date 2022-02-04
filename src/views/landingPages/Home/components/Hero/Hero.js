@@ -30,7 +30,7 @@ const Hero = () => {
             >
               Donation
               <br />
-              Dao
+              DAO
             </Typography>
 
             <Typography

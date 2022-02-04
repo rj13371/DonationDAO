@@ -39,6 +39,7 @@
     "date-fns": "^2.19.0",
     "formik": "^2.2.6",
     "history": "^5.0.0",
+    "moment": "^2.29.1",
     "moralis": "^1.2.4",
     "node-sass": "^6.0.0",
     "prop-types": "^15.7.2",

@@ -245,6 +245,11 @@ const Crowdfundview = () => {
                 )}
               </Formik>
             </Grid>
+
+            <Typography textAlign={'center'} variant={'h6'} sx={{ margin: 2 }}>
+              Latest Donations
+            </Typography>
+
             {crowdfund.attributes && (
               <GetTokenTransfers address={crowdfund.attributes.address} />
             )}
