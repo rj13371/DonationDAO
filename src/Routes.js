@@ -4,8 +4,6 @@ import WithLayout from 'WithLayout';
 // Available layouts
 import {
   Main as MainLayout,
-  Fluid as FluidLayout,
-  Fixed as FixedLayout,
 } from './layouts';
 
 // Landing pages
