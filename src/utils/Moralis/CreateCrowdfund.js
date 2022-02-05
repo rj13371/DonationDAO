@@ -40,7 +40,7 @@ export default function CreateCrowdfund() {
   const getFile = () => {
     const query = new Moralis.Query(Crowdfund);
     query.equalTo('owner', Moralis.User.current().id);
-    query.find().then(function(crowdfund) {
+    query.find().then(function (crowdfund) {
       const ipfs = crowdfund[2].get('image').ipfs();
       const hash = crowdfund[2].get('image').hash();
       console.log('IPFS url', ipfs);
