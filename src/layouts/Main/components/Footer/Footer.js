@@ -46,7 +46,7 @@ const Footer = () => (
             <Link
               underline="none"
               component="a"
-              href="/page-faq"
+              href="/#/page-faq"
               color="textPrimary"
               variant={'subtitle2'}
             >
