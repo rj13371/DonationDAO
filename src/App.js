@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Routes from './Routes';
 
@@ -15,9 +15,9 @@ const browserHistory = createBrowserHistory();
 
 const App = () => {
   return (
-    <BrowserRouter history={browserHistory}>
+    <HashRouter history={browserHistory}>
       <Routes />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

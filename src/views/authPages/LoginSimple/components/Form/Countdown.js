@@ -120,9 +120,7 @@ const Countdown = ({ initialValues }) => {
           </Typography>
 
           <Box sx={{ minWidth: 35 }}>
-            <Typography variant="body2" color="text.secondary">{`${0} of ${
-              initialValues.goal
-            } met`}</Typography>
+            <Typography variant="body2" color="text.secondary">{`${0} of ${initialValues.goal} met`}</Typography>
           </Box>
 
           <Progressbar value={500} goal={1000} />

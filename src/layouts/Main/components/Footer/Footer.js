@@ -46,7 +46,7 @@ const Footer = () => (
             <Link
               underline="none"
               component="a"
-              href="/page-faq"
+              href="/#/page-faq"
               color="textPrimary"
               variant={'subtitle2'}
             >
@@ -72,7 +72,7 @@ const Footer = () => (
             </Link>
             <Link
               underline={'hover'}
-              href={'https://twitter.com/rj13371'}
+              href={'https://twitter.com/DonationDAO'}
               target={'_blank'}
             >
               <IconButton

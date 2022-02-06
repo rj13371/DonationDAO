@@ -92,7 +92,7 @@ const Hero = () => {
             >
               <Button
                 component={'a'}
-                href={'/page-faq'}
+                href={'/#/page-faq'}
                 variant="outlined"
                 color="primary"
                 size="large"
