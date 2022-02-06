@@ -1,7 +1,8 @@
-Donation Dao
-
 ## See here
 https://donation-dao.com/
+
+Donation-DAO is a decentralized platform for people who wish to fundraise for grassroots causes, friends/family or themselves without worrying about Web2 censorship. The Frontend allows users to create Donation Pages with descriptions on what they are fundraising for, then it will be publicly posted with their wallet setup to receive donations on the dApp easily. We emphasize the transparent nature of blockchain transactions and encourage users to share what and how they are using the raised funds. Our platform is simple, censorship resistant and transparent. Eventually we will integrate a smart contract with a governance token and become a DAO. 
+
 
 ## Built with
 
@@ -11,10 +12,6 @@ https://donation-dao.com/
 - Moralis
 - Fleed
 - IPFS
-
-## Features
-
-Donation-DAO is a decentralized platform for people who wish to fundraise for grassroots causes, friends/family or themselves without worrying about Web2 censorship. The Frontend allows users to create Donation Pages with descriptions on what they are fundraising for, then it will be publicly posted with their wallet setup to receive donations on the dApp easily. We emphasize the transparent nature of blockchain transactions and encourage users to share what and how they are using the raised funds. Our platform is simple, censorship resistant and transparent. Eventually we will integrate a smart contract with a governance token and become a DAO. 
 
 ## How it's made
 
