@@ -37,17 +37,17 @@ export default function CreateCrowdfund() {
     );
   };
 
-  const getFile = () => {
-    const query = new Moralis.Query(Crowdfund);
-    query.equalTo('owner', Moralis.User.current().id);
-    query.find().then(function (crowdfund) {
-      const ipfs = crowdfund[2].get('image').ipfs();
-      const hash = crowdfund[2].get('image').hash();
-      console.log('IPFS url', ipfs);
-      console.log('IPFS hash', hash);
-      console.log(crowdfund);
-    });
-  };
+  // const getFile = () => {
+  //   const query = new Moralis.Query(Crowdfund);
+  //   query.equalTo('owner', Moralis.User.current().id);
+  //   query.find().then(function (crowdfund) {
+  //     const ipfs = crowdfund[2].get('image').ipfs();
+  //     const hash = crowdfund[2].get('image').hash();
+  //     console.log('IPFS url', ipfs);
+  //     console.log('IPFS hash', hash);
+  //     console.log(crowdfund);
+  //   });
+  // };
 
   return (
     <React.Fragment>
@@ -58,15 +58,6 @@ export default function CreateCrowdfund() {
         type="button"
       >
         Submit
-      </Button>
-
-      <Button
-        onClick={getFile}
-        size={'large'}
-        variant={'contained'}
-        type="button"
-      >
-        get fiel
       </Button>
     </React.Fragment>
   );

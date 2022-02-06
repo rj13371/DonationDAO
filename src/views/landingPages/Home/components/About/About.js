@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import landing1 from '../../../../../assets/landing1.jpg';
 import landing2 from '../../../../../assets/landing2.jpg';
 import landing3 from '../../../../../assets/landing3.jpg';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const theme = useTheme();
@@ -39,26 +40,35 @@ const About = () => {
               flexDirection={{ xs: 'column', sm: 'row' }}
               alignItems={{ xs: 'stretched', sm: 'flex-start' }}
             >
-              <Box
-                component={Button}
-                variant="outlined"
-                color="primary"
-                size="large"
-                fullWidth={!isMd}
+              <a
+                underline={'hover'}
+                rel="noreferrer"
+                href={'https://discord.gg/4H5dE7XmDQ'}
+                target={'_blank'}
               >
-                Contact sales
-              </Box>
-              <Box
-                component={Button}
-                variant="contained"
-                color="primary"
-                size="large"
-                fullWidth={!isMd}
-                marginTop={{ xs: 1, sm: 0 }}
-                marginLeft={{ sm: 2 }}
-              >
-                Subscribe
-              </Box>
+                <Box
+                  component={Button}
+                  variant="outlined"
+                  color="primary"
+                  size="large"
+                  fullWidth={!isMd}
+                >
+                  Join our Discord
+                </Box>
+              </a>
+              <Link to="/dashboard">
+                <Box
+                  component={Button}
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  fullWidth={!isMd}
+                  marginTop={{ xs: 1, sm: 0 }}
+                  marginLeft={{ sm: 2 }}
+                >
+                  Go to Dashboard
+                </Box>
+              </Link>
             </Box>
           </Box>
         </Grid>
@@ -77,7 +87,7 @@ const About = () => {
           >
             <Box
               component={'img'}
-              src={landing1}
+              src={landing3}
               alt="..."
               width={160}
               height={160}
@@ -113,7 +123,7 @@ const About = () => {
               component={'img'}
               width={300}
               height={300}
-              src={landing3}
+              src={landing1}
               alt="..."
               marginTop={'-20%'}
               marginLeft={'calc(100% - 300px)'}
