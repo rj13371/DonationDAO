@@ -17,7 +17,7 @@ export default function GetTokenTransfers({ address }) {
   useEffect(async () => {
     if (isInitialized) {
       const options = {
-        chain: 'rinkeby',
+        chain: 'mumbai',
         address: address,
         from_block: '0',
         limit: '10',
@@ -57,7 +57,7 @@ export default function GetTokenTransfers({ address }) {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href={`https://rinkeby.etherscan.io/tx/${token.transaction_hash}`}
+                    href={`https://mumbai.polygonscan.com/tx/${token.transaction_hash}`}
                   >
                     {'0x...' + token.address.substring(37, 43)}
                   </a>

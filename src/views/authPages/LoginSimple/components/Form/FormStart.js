@@ -27,7 +27,6 @@ export default function FormStart({ onSubmit, initialValues }) {
       onSubmit={onSubmit}
       validateOnBlur={false}
       validateOnChange={false}
-      enableReinitialize
     >
       {({ setFieldValue }) => (
         <Form autoComplete="off" noValidate>
@@ -46,7 +45,7 @@ export default function FormStart({ onSubmit, initialValues }) {
                     Myself
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Got an idea or need help?
+                    Want to kickstart an idea or need help?
                   </Typography>
                 </CardContent>
                 <CardActions>

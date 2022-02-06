@@ -77,7 +77,7 @@ const Content = () => {
             {
               title: 'How does Donation DAO work?',
               subtitle:
-                'You start by creating a story about the cause you are raising funds for. ',
+                'You start by creating a story about the cause you are raising funds for. Once you have completed the setup of the Donation page, your crowdfund will be listed publicly on our Platform. On the Donation page you can see how much a wallet has received in Donations and what transactions have been made. There you may Donate directly to the Donation pages associated wallet. ',
             },
             {
               title: 'How much does it cost to start a Donation Page?',
@@ -104,7 +104,12 @@ const Content = () => {
                 'Any ERC20 token on the Polygon network or the Polygon native token is supported. ',
             },
             {
-              title: 'Is my country eligable for Donation DAO?',
+              title: 'Can I receive a refund for my donation?',
+              subtitle:
+                'We are unable to process refunds due to the permanent nature of blockchain transactions, so we encourage crowdfund creators to be as transparant as possible in how they will spend funds and to give regualr updates on the spending of donations',
+            },
+            {
+              title: 'Is my country eligible for Donation DAO?',
               subtitle: 'Yes. Cryptocurrency is beyond borders.',
             },
           ]}

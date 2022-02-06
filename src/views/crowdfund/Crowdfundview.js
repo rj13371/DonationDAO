@@ -102,7 +102,7 @@ const Crowdfundview = () => {
   );
 
   const GridItemHeadlineBlock = () => (
-    <Box>
+    <Box sx={{ maxWidth: 600 }}>
       <Box
         component={Typography}
         fontWeight={700}
@@ -131,6 +131,35 @@ const Crowdfundview = () => {
         data-aos={isMd ? 'fade-right' : 'fade-up'}
       >
         {crowdfund.attributes.address ? crowdfund.attributes.address : ''}
+      </Typography>
+
+      <Typography
+        variant={'subtitle2'}
+        component={'p'}
+        color={'textSecondary'}
+        data-aos={isMd ? 'fade-right' : 'fade-up'}
+      >
+        {crowdfund.attributes.name
+          ? 'By ' + crowdfund.attributes.name
+          : 'By anonymous'}
+      </Typography>
+
+      <Typography
+        variant={'subtitle2'}
+        component={'p'}
+        color={'textSecondary'}
+        data-aos={isMd ? 'fade-right' : 'fade-up'}
+      >
+        {crowdfund.attributes.city ? crowdfund.attributes.city : ''}
+      </Typography>
+
+      <Typography
+        variant={'subtitle2'}
+        component={'p'}
+        color={'textSecondary'}
+        data-aos={isMd ? 'fade-right' : 'fade-up'}
+      >
+        {crowdfund.attributes.country ? crowdfund.attributes.country : ''}
       </Typography>
 
       <Typography
@@ -343,14 +372,14 @@ const Crowdfundview = () => {
       {crowdfund && (
         <Container>
           <Box>
-            <Grid container spacing={4}>
+            <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <Box width={1} height="100%" display="flex" alignItems="center">
                   <GridItemHeadlineBlock />
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Box width={1} height="100%" display="flex" alignItems="center">
+                <Box width={1} height="50%" display="flex" alignItems="center">
                   <GridItemReviewBlock />
                 </Box>
               </Grid>

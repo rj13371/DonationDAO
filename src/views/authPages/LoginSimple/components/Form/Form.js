@@ -11,7 +11,6 @@ import FormNameAndLocation from './FormNameAndLocation';
 import FormStart from './FormStart';
 import FormFinal from './FormFinal';
 import FormPreview from './FormPreview';
-import { Link } from 'react-router-dom';
 
 const validationSchema = yup.object({
   address: yup
@@ -92,14 +91,9 @@ const Form = () => {
         <Box marginBottom={{ xs: 1, sm: 0 }}>
           <Typography variant={'subtitle2'}>
             Already have a crowdfunding page?{' '}
-            <Link
-              component={'a'}
-              color={'primary'}
-              href={'/dashboard'}
-              underline={'none'}
-            >
+            <a color={'primary'} href={'/#/dashboard'} underline={'none'}>
               Go to your dashboard
-            </Link>
+            </a>
           </Typography>
         </Box>
       </Box>

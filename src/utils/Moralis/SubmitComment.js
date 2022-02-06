@@ -4,7 +4,7 @@ const SubmitComment = async (commentForm) => {
   const Comment = Moralis.Object.extend('Comment');
   const comment = new Comment();
 
-  const options = { chain: 'rinkeby', addresses: commentForm.contractAddress };
+  const options = { chain: 'mumbai', addresses: commentForm.contractAddress };
   const tokenMetadata = await Moralis.Web3API.token.getTokenMetadata(options);
 
   console.log(tokenMetadata);
