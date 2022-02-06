@@ -59,7 +59,7 @@ const Footer = () => {
               </svg>
             }
           >
-            Start a crowdfund
+            Start for free
           </Button>
         </Link>
       </Box>
