@@ -56,6 +56,30 @@ export default function FormDetails(props) {
             helperText={formik.touched.goal && formik.errors.goal}
           />
         </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant={'subtitle2'} sx={{ marginBottom: 2 }}>
+            Enter your crowdfunding goal in USD
+          </Typography>
+          <TextField
+            label="goal *"
+            variant="outlined"
+            name={'goal'}
+            fullWidth
+            value={formik.values.goal}
+            onChange={formik.handleChange}
+            error={formik.touched.goal && Boolean(formik.errors.goal)}
+            helperText={formik.touched.goal && formik.errors.goal}
+          />
+
+          <DateTimePicker
+            label="Crowdfunding End Date and Time"
+            inputVariant="outlined"
+            value={formik.values.date}
+            onChange={formik.handleChange}
+          />
+        </Grid>
+
         <Grid item container xs={12}>
           <Box
             display="flex"

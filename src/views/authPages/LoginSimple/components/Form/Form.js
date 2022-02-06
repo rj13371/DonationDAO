@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { CreateCrowdfundContext } from 'context/CreateCrowdfundContext';
 import FormDetails from './FormDetails';
+import FormNameAndLocation from './FormNameAndLocation';
 import FormStart from './FormStart';
 import FormFinal from './FormFinal';
 import FormPreview from './FormPreview';
@@ -24,6 +25,18 @@ const validationSchema = yup.object({
     .required('Please specify your crowdfunding title')
     .min(5, 'The title should have at minimum length of 5'),
   goal: yup.number().required('Please specify your donation goal'),
+  name: yup.string('Name must be a combination of letters/numbers').trim(),
+  city: yup
+    .string('Please enter a valid city')
+    .trim()
+    .lowercase(),
+  country: yup
+    .string('Please enter a valid country')
+    .trim()
+    .lowercase(),
+  date: yup
+    .date()
+    .required('Please enter a date and time the crowdfund will end'),
 });
 
 const Form = () => {
@@ -97,6 +110,10 @@ const Form = () => {
       {formStep === 2 && <FormDetails formik={formik} goBack={goBack} />}
 
       {formStep === 3 && (
+        <FormNameAndLocation formik={formik} goBack={goBack} />
+      )}
+
+      {formStep === 4 && (
         <FormFinal
           initialValues={initialValues}
           goBack={goBack}
@@ -104,7 +121,7 @@ const Form = () => {
         />
       )}
 
-      {formStep === 4 && (
+      {formStep === 5 && (
         <FormPreview initialValues={initialValues} goBack={goBack} />
       )}
     </Box>

@@ -5,12 +5,16 @@ export const CreateCrowdfundContext = createContext();
 export function CreateCrowdfundProvider(props) {
   const [crowdfundForm, setCrowdfundForm] = useState({
     type: 'individual',
+    name: '',
+    city: '',
+    country: '',
     address: '',
     title: '',
     goal: '',
     description: '',
     image: '',
     youtube: '',
+    date: new Date('2022-12-31T23:59:59'),
   });
 
   console.log(crowdfundForm);
