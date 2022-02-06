@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { colors } from '@mui/material';
+import discordLogo from '../../../../svg/logos/discordLogo.svg';
 
 const Footer = () => (
   <Grid container spacing={2}>
@@ -82,6 +83,26 @@ const Footer = () => (
                 }}
               >
                 <TwitterIcon />
+              </IconButton>
+            </Link>
+            <Link
+              underline={'hover'}
+              href={'https://discord.gg/4H5dE7XmDQ'}
+              target={'_blank'}
+            >
+              <IconButton
+                size={'small'}
+                sx={{
+                  color: colors.blueGrey[200],
+                  marginTop: 0.5,
+                }}
+              >
+                <img
+                  height={25}
+                  width={26}
+                  color={'#B0BEC5'}
+                  src={discordLogo}
+                />
               </IconButton>
             </Link>
           </Box>

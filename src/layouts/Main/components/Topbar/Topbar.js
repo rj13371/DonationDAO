@@ -6,6 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import logo from 'svg/logos/logo.png';
 import Login from 'utils/Moralis/Login';
+import Searchbar from '../Searchbar/Searchbar';
 
 const Topbar = ({ themeMode, themeToggler }) => {
   const theme = useTheme();
@@ -28,6 +29,12 @@ const Topbar = ({ themeMode, themeToggler }) => {
           width={45}
         >
           <img src={logo} height={40} width={40} />
+        </Box>
+      </Box>
+
+      <Box display={'flex'} alignItems={'center'}>
+        <Box display={'flex'} alignItems="baseline">
+          <Searchbar />
         </Box>
       </Box>
       <Box display="flex" alignItems={'center'}>
@@ -83,7 +90,7 @@ const Topbar = ({ themeMode, themeToggler }) => {
             <Link
               underline="none"
               component="a"
-              href="/docs-introduction"
+              href="/#/dashboard"
               color="textPrimary"
             >
               Dashboard
