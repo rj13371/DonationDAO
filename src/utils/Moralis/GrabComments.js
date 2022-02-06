@@ -1,6 +1,6 @@
 import Moralis from 'moralis';
 
-const GrabCOmments = async (receiver) => {
+const GrabComments = async (receiver) => {
   console.log(receiver);
 
   const Comment = Moralis.Object.extend('Comment');
@@ -19,4 +19,4 @@ const GrabCOmments = async (receiver) => {
   return comments;
 };
 
-export default GrabCOmments;
+export default GrabComments;

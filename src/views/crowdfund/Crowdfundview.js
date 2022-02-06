@@ -25,7 +25,7 @@ import GetTokenTransfers from 'utils/Moralis/GetTokenTransfers';
 import CountdownTimer from '../authPages/LoginSimple/components/Form/Countdown';
 import { Switch } from '@mui/material';
 import SubmitComment from 'utils/Moralis/SubmitComment';
-import GrabComments from 'utils/Moralis/GrabComments';
+import CommentView from './CommentView';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -80,14 +80,6 @@ const Crowdfundview = () => {
       });
     }
   }, [isInitialized]);
-
-  useEffect(() => {
-    if (isInitialized && crowdfund) {
-      GrabComments(crowdfund.attributes.address).then((res) => {
-        console.log(res);
-      });
-    }
-  }, [crowdfund, isInitialized]);
 
   const VidPreview = () => (
     <Box>
@@ -233,14 +225,32 @@ const Crowdfundview = () => {
                     </Box>
                   </Stack>
 
-                  <Stack sx={{ minWidth: 600, marginTop: 5 }} spacing={2}>
+                  <Stack
+                    alignItems="left"
+                    sx={{ minWidth: 550, marginTop: 5 }}
+                    spacing={2}
+                  >
                     <Item>
                       <Typography
                         variant={'subtitle2'}
                         sx={{ marginBottom: 2 }}
                       >
-                        Comment
+                        Include Comment?
+                        <Field
+                          label="Remember Me"
+                          name="rememberMe"
+                          type="checkbox"
+                          component={Switch}
+                          onChange={(event) => {
+                            if (event.target.checked) {
+                              setFieldValue('submitComment', true);
+                            } else {
+                              setFieldValue('submitComment', false);
+                            }
+                          }}
+                        />
                       </Typography>
+
                       <TextField
                         sx={{ minWidth: 500 }}
                         label="comment"
@@ -256,30 +266,17 @@ const Crowdfundview = () => {
                         variant={'subtitle2'}
                         sx={{ marginBottom: 2 }}
                       >
-                        Name
+                        Include Name?
                       </Typography>
                       <TextField
                         sx={{ width: 200 }}
                         label="name"
                         variant="outlined"
+                        defaultValue={'anonymous'}
                         name={'name'}
                         fullWidth
                         onChange={(event) => {
                           setFieldValue('name', event.currentTarget.value);
-                        }}
-                      />
-
-                      <Field
-                        label="Remember Me"
-                        name="rememberMe"
-                        type="checkbox"
-                        component={Switch}
-                        onChange={(event) => {
-                          if (event.target.checked) {
-                            setFieldValue('submitComment', true);
-                          } else {
-                            setFieldValue('submitComment', false);
-                          }
                         }}
                       />
                     </Item>
@@ -358,6 +355,37 @@ const Crowdfundview = () => {
                 </Box>
               </Grid>
             </Grid>
+
+            <Stack spacing={100} direction="row">
+              <Box>
+                <Typography textAlign={'left'} variant={'h6'}>
+                  Latest Comments
+                </Typography>
+              </Box>
+              <Box>
+                {' '}
+                <Typography textAlign={'right'} variant={'h6'}>
+                  Latest Updates
+                </Typography>
+              </Box>
+            </Stack>
+
+            <Stack spacing={2} marginTop={20} direction="row">
+              <Item>
+                <Box height="50%" display="flex" alignItems="center">
+                  {crowdfund.attributes && (
+                    <CommentView address={crowdfund.attributes.address} />
+                  )}
+                </Box>
+              </Item>
+              <Item>
+                <Box height="50%" display="flex" alignItems="center">
+                  {crowdfund.attributes && (
+                    <CommentView address={crowdfund.attributes.address} />
+                  )}
+                </Box>
+              </Item>
+            </Stack>
 
             <Typography textAlign={'center'} variant={'h6'} sx={{ margin: 2 }}>
               Latest Donations
