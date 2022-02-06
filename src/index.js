@@ -4,8 +4,8 @@ import { MoralisProvider } from 'react-moralis';
 import App from './App';
 import { CreateCrowdfundProvider } from './context/CreateCrowdfundContext';
 import { UserTokenListProvider } from './context/UserTokenListContext';
-import DateAdapter from '@mui/lab/AdapterMoment';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DateAdapter from '@mui/lab/AdapterDateFns';
 
 ReactDOM.render(
   <MoralisProvider

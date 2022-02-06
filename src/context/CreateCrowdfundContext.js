@@ -14,7 +14,7 @@ export function CreateCrowdfundProvider(props) {
     description: '',
     image: '',
     youtube: '',
-    date: new Date('2022-12-31T23:59:59'),
+    date: new Date(),
   });
 
   console.log(crowdfundForm);

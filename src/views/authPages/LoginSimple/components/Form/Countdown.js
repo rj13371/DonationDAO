@@ -1,143 +1,137 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import moment from 'moment';
 import Progressbar from './Progressbar';
+import Countdown from 'react-countdown';
 
-const Countdown = ({ initialValues }) => {
-  const GridItemFormBlock = () => {
-    const [minutes, setMinutes] = useState(30);
-    const [seconds, setSeconds] = useState(60);
-    useEffect(() => {
-      let myInterval = setInterval(() => {
-        if (seconds > 0) {
-          setSeconds(seconds - 1);
-        }
-        if (seconds === 0) {
-          if (minutes === 0) {
-            clearInterval(myInterval);
-          } else {
-            setMinutes(minutes - 1);
-            setSeconds(59);
-          }
-        }
-      }, 1000);
-      return () => {
-        clearInterval(myInterval);
-      };
-    });
+const CountdownTimer = ({ initialValues }) => {
+  const then = moment(initialValues.date).format('x');
+  const now = Date.now();
+  const diff = then - now;
 
-    return (
-      <Box
-        padding={{ xs: 3, sm: 6 }}
-        width={'100%'}
-        component={Card}
-        borderRadius={2}
-        boxShadow={4}
-      >
+  console.log(then, now, diff);
+
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      return <p>{'hello'}</p>;
+    } else {
+      return (
         <Box
-          display="flex"
-          flexDirection={'row'}
-          justifyContent={'space-around'}
+          padding={{ xs: 3, sm: 6 }}
+          width={'100%'}
+          component={Card}
+          borderRadius={2}
+          boxShadow={4}
         >
-          <Box display="flex" flexDirection={'column'} alignItems={'center'}>
-            <Typography
-              variant={'h6'}
-              sx={{
-                fontWeight: 900,
-              }}
-            >
-              13
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: 700,
-              }}
-            >
-              Days
-            </Typography>
-          </Box>
-          <Box display="flex" flexDirection={'column'} alignItems={'center'}>
-            <Typography
-              variant={'h6'}
-              sx={{
-                fontWeight: 900,
-              }}
-            >
-              09
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: 900,
-              }}
-            >
-              Hours
-            </Typography>
-          </Box>
-          <Box display="flex" flexDirection={'column'} alignItems={'center'}>
-            <Typography
-              variant={'h6'}
-              sx={{
-                fontWeight: 900,
-              }}
-            >
-              {minutes}
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: 900,
-              }}
-            >
-              Minutes
-            </Typography>
-          </Box>
-          <Box display="flex" flexDirection={'column'} alignItems={'center'}>
-            <Typography
-              variant={'h6'}
-              sx={{
-                fontWeight: 900,
-              }}
-            >
-              {seconds}
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: 900,
-              }}
-            >
-              Seconds
-            </Typography>
-          </Box>
-        </Box>
-        <Box marginTop={4}>
-          <Typography
-            sx={{
-              fontWeight: 900,
-            }}
+          <Box
+            display="flex"
+            flexDirection={'row'}
+            justifyContent={'space-around'}
           >
-            Goal Progress
-          </Typography>
-
-          <Box sx={{ minWidth: 35 }}>
-            <Typography variant="body2" color="text.secondary">{`${0} of ${initialValues.goal} met`}</Typography>
+            <Box display="flex" flexDirection={'column'} alignItems={'center'}>
+              <Typography
+                variant={'h6'}
+                sx={{
+                  fontWeight: 900,
+                }}
+              >
+                {days}
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                }}
+              >
+                Days
+              </Typography>
+            </Box>
+            <Box display="flex" flexDirection={'column'} alignItems={'center'}>
+              <Typography
+                variant={'h6'}
+                sx={{
+                  fontWeight: 900,
+                }}
+              >
+                {hours}
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 900,
+                }}
+              >
+                Hours
+              </Typography>
+            </Box>
+            <Box display="flex" flexDirection={'column'} alignItems={'center'}>
+              <Typography
+                variant={'h6'}
+                sx={{
+                  fontWeight: 900,
+                }}
+              >
+                {minutes}
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 900,
+                }}
+              >
+                Minutes
+              </Typography>
+            </Box>
+            <Box display="flex" flexDirection={'column'} alignItems={'center'}>
+              <Typography
+                variant={'h6'}
+                sx={{
+                  fontWeight: 900,
+                }}
+              >
+                {seconds}
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 900,
+                }}
+              >
+                Seconds
+              </Typography>
+            </Box>
           </Box>
+          <Box marginTop={4}>
+            <Typography
+              sx={{
+                fontWeight: 900,
+              }}
+            >
+              Goal Progress
+            </Typography>
 
-          <Progressbar value={500} goal={1000} />
+            <Box sx={{ minWidth: 35 }}>
+              <Typography variant="body2" color="text.secondary">{`${0} of ${
+                initialValues.goal
+              } met`}</Typography>
+            </Box>
+
+            <Progressbar value={500} goal={1000} />
+          </Box>
         </Box>
-      </Box>
-    );
+      );
+    }
   };
 
   return (
     <Box>
       <Grid container>
         <Box width="100%" height="100%" display="flex" alignItems="center">
-          <GridItemFormBlock />
+          <Countdown date={Date.now() + diff} renderer={renderer} />
         </Box>
       </Grid>
     </Box>
   );
 };
 
-export default Countdown;
+export default CountdownTimer;

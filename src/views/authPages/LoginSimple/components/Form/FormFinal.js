@@ -37,10 +37,12 @@ export default function FormFinal({ onSubmit, initialValues, goBack }) {
                 onChange={(event) => {
                   setFieldValue('image', event.currentTarget.files[0]);
                 }}
+                required="true"
               />
 
               <Typography variant={'subtitle2'} sx={{ margin: 2 }}>
-                Set a youtube link <br /> This video will be publicly shown.
+                Set a youtube link {'(optional)'} <br /> This video will be
+                publicly shown.
               </Typography>
 
               <TextField

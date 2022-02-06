@@ -66,7 +66,10 @@ export default function FormDetails(props) {
             label="Date and Time *"
             inputVariant="outlined"
             value={formik.values.date}
-            onChange={formik.handleChange}
+            onChange={(val) => {
+              console.log('___', val);
+              formik.setFieldValue('date', val);
+            }}
             error={formik.touched.date && Boolean(formik.errors.date)}
             helperText={formik.touched.date && formik.errors.date}
             renderInput={(params) => <TextField {...params} />}

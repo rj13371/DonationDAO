@@ -30,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "@date-io/date-fns": "^2.13.1",
     "@date-io/moment": "^2.13.1",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -46,6 +47,7 @@
     "node-sass": "^6.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-countdown": "^2.3.2",
     "react-countup": "^4.3.3",
     "react-dom": "^17.0.1",
     "react-images": "^1.1.7",
