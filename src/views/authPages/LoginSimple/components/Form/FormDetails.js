@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import DateTimePicker from '@mui/lab/DateTimePicker';
 
 export default function FormDetails(props) {
   const { formik, goBack } = props;
@@ -59,24 +60,16 @@ export default function FormDetails(props) {
 
         <Grid item xs={12}>
           <Typography variant={'subtitle2'} sx={{ marginBottom: 2 }}>
-            Enter your crowdfunding goal in USD
+            Enter your Crowdfunding End Date and Time
           </Typography>
-          <TextField
-            label="goal *"
-            variant="outlined"
-            name={'goal'}
-            fullWidth
-            value={formik.values.goal}
-            onChange={formik.handleChange}
-            error={formik.touched.goal && Boolean(formik.errors.goal)}
-            helperText={formik.touched.goal && formik.errors.goal}
-          />
-
           <DateTimePicker
-            label="Crowdfunding End Date and Time"
+            label="Date and Time *"
             inputVariant="outlined"
             value={formik.values.date}
             onChange={formik.handleChange}
+            error={formik.touched.date && Boolean(formik.errors.date)}
+            helperText={formik.touched.date && formik.errors.date}
+            renderInput={(params) => <TextField {...params} />}
           />
         </Grid>
 
