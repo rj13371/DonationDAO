@@ -1,5 +1,6 @@
 ## See here
 https://donation-dao.com/
+https://showcase.ethglobal.com/roadtoweb3/donation-dao
 
 Donation-DAO is a decentralized platform for people who wish to fundraise for grassroots causes, friends/family or themselves without worrying about Web2 censorship. The Frontend allows users to create Donation Pages with descriptions on what they are fundraising for, then it will be publicly posted with their wallet setup to receive donations on the dApp easily. We emphasize the transparent nature of blockchain transactions and encourage users to share what and how they are using the raised funds. Our platform is simple, censorship resistant and transparent. Eventually we will integrate a smart contract with a governance token and become a DAO. 
 
@@ -20,6 +21,6 @@ I used Material UI, a Material UI Theme and React to design the web application.
 
 ## Quick start
 
-- Install dependencies: `yarn install`
-- Start the server: `yarn start`
-- Build on production: `yarn build`
+- Install dependencies: `npm i`
+- Start the server: `npm start`
+- Build on production: `npm run build`
