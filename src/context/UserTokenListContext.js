@@ -10,7 +10,7 @@ export function UserTokenListProvider(props) {
 
   useEffect(async () => {
     if (isInitialized) {
-      const options = { chain: 'rinkeby' };
+      const options = { chain: 'mumbai' };
       const balances = await Moralis.Web3API.account.getTokenBalances(options);
       console.log(balances);
       setUserTokens(balances);

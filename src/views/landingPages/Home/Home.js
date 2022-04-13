@@ -2,7 +2,8 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Container from 'common/Container';
-import { Features, Footer, Hero, Highlights } from './components';
+import { Features, Footer, Hero, Highlights, About } from './components';
+import Roadmap from './components/Roadmap/Roadmap';
 
 const Home = () => {
   const theme = useTheme();
@@ -18,6 +19,12 @@ const Home = () => {
       </Container>
       <Container>
         <Features />
+      </Container>
+      <Container>
+        <About />
+      </Container>
+      <Container>
+        <Roadmap />
       </Container>
       <Container>
         <Footer />

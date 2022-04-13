@@ -9,6 +9,9 @@ import { Formik, Form } from 'formik';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import charity from '../../../../../assets/charity.jpg';
+import family from '../../../../../assets/family.jpg';
+import myself from '../../../../../assets/myself.jpg';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -24,7 +27,6 @@ export default function FormStart({ onSubmit, initialValues }) {
       onSubmit={onSubmit}
       validateOnBlur={false}
       validateOnChange={false}
-      enableReinitialize
     >
       {({ setFieldValue }) => (
         <Form autoComplete="off" noValidate>
@@ -34,20 +36,23 @@ export default function FormStart({ onSubmit, initialValues }) {
               <Card sx={{ minWidth: 300 }}>
                 <CardMedia
                   component="img"
-                  height="140"
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  alt="green iguana"
+                  height="200"
+                  image={myself}
+                  alt="myself"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Myself
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Lorem Ipsum
+                    Want to kickstart an idea or need help?
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Button
+                    color="primary"
+                    variant="contained"
+                    sx={{ marginLeft: '40%' }}
                     onClick={() => {
                       setFieldValue('type', 'individual');
                     }}
@@ -64,20 +69,23 @@ export default function FormStart({ onSubmit, initialValues }) {
               <Card sx={{ minWidth: 300 }}>
                 <CardMedia
                   component="img"
-                  height="140"
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  alt="green iguana"
+                  height="200"
+                  image={family}
+                  alt="family"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Friends or Family
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Lorem Ipsum
+                    Raise funds for your loved ones
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Button
+                    color="primary"
+                    variant="contained"
+                    sx={{ marginLeft: '40%' }}
                     onClick={() => {
                       setFieldValue('type', 'family');
                     }}
@@ -94,23 +102,26 @@ export default function FormStart({ onSubmit, initialValues }) {
               <Card sx={{ minWidth: 300 }}>
                 <CardMedia
                   component="img"
-                  height="140"
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  alt="green iguana"
+                  height="200"
+                  image={charity}
+                  alt="charity"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Charity
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Lorem Ipsum
+                    Raise funds for a grassroots cause
                   </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{ alignItems: 'center' }}>
                   <Button
+                    color="primary"
+                    variant="contained"
                     onClick={() => {
                       setFieldValue('type', 'charity');
                     }}
+                    sx={{ marginLeft: '40%' }}
                     type={'submit'}
                     size="small"
                   >

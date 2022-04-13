@@ -118,7 +118,8 @@ const FormPreview = ({ initialValues, goBack }) => {
                 borderRadius={5}
                 src={initialValues.image ? preview : ''}
               ></Box>
-              <VidPreview />
+              {initialValues.youtube ? <VidPreview /> : ''}
+
               <Countdown initialValues={initialValues} />
             </Box>
           </Box>

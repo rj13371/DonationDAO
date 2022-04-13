@@ -19,7 +19,7 @@ export default function Login() {
           onClick={() => authenticate()}
           size="large"
         >
-          Authenticate
+          Connect Wallet
         </Button>
       </div>
     );
@@ -34,7 +34,7 @@ export default function Login() {
         size="large"
         disabled={isAuthenticating}
       >
-        Logout
+        Disconnect
       </Button>
     </div>
   );

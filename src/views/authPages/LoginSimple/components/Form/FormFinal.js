@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import { Button, TextField, Typography } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -37,10 +38,12 @@ export default function FormFinal({ onSubmit, initialValues, goBack }) {
                 onChange={(event) => {
                   setFieldValue('image', event.currentTarget.files[0]);
                 }}
+                required="true"
               />
 
               <Typography variant={'subtitle2'} sx={{ margin: 2 }}>
-                Set a youtube link <br /> This video will be publicly shown.
+                Set a youtube link {'(optional)'} <br /> This video will be
+                publicly shown.
               </Typography>
 
               <TextField
@@ -71,17 +74,30 @@ export default function FormFinal({ onSubmit, initialValues, goBack }) {
             </Item>
           </Stack>
 
-          <Button
-            onClick={goBack}
-            size={'large'}
-            variant={'contained'}
-            type="button"
-          >
-            Back
-          </Button>
-          <Button size={'large'} variant={'contained'} type={'submit'}>
-            Next
-          </Button>
+          <Grid item container xs={12}>
+            <Box
+              display="flex"
+              flexDirection={{ xs: 'column', sm: 'row' }}
+              alignItems={{ xs: 'stretched', sm: 'center' }}
+              justifyContent={'space-between'}
+              width={'100%'}
+              maxWidth={600}
+              margin={'0 auto'}
+              marginTop={7}
+            >
+              <Button
+                onClick={goBack}
+                size={'large'}
+                variant={'contained'}
+                type="button"
+              >
+                Back
+              </Button>
+              <Button size={'large'} variant={'contained'} type={'submit'}>
+                Next
+              </Button>
+            </Box>
+          </Grid>
         </Form>
       )}
     </Formik>

@@ -31,6 +31,12 @@ const Topbar = ({ themeMode, themeToggler }) => {
           <img src={logo} height={40} width={40} />
         </Box>
       </Box>
+
+      <Box display={'flex'} alignItems={'center'}>
+        <Box display={'flex'} alignItems="baseline">
+          <Searchbar />
+        </Box>
+      </Box>
       <Box display="flex" alignItems={'center'}>
         <Box
           display={'flex'}
@@ -84,7 +90,7 @@ const Topbar = ({ themeMode, themeToggler }) => {
             <Link
               underline="none"
               component="a"
-              href="/docs-introduction"
+              href="/#/dashboard"
               color="textPrimary"
             >
               <Button variant="contained" color="primary" size="large">

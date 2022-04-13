@@ -22,6 +22,10 @@ import { styled } from '@mui/material/styles';
 import { Select } from '@mui/material';
 import GetTokenBalance from 'utils/Moralis/GetTokenBalance';
 import GetTokenTransfers from 'utils/Moralis/GetTokenTransfers';
+import CountdownTimer from '../authPages/LoginSimple/components/Form/Countdown';
+import { Switch } from '@mui/material';
+import SubmitComment from 'utils/Moralis/SubmitComment';
+import CommentView from './CommentView';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -40,6 +44,7 @@ const Crowdfundview = () => {
   const { userTokens } = useContext(UserTokenListContext);
 
   const [crowdfund, setCrowdfund] = useState();
+  const [currentUserAddress, setCurrentUserAddress] = useState();
 
   const { id } = useParams();
 
@@ -55,6 +60,10 @@ const Crowdfundview = () => {
       contractAddress: contractAddress,
     };
     let result = await Moralis.transfer(options);
+
+    if (values.submitComment && result.hash) {
+      SubmitComment(values);
+    }
     console.log(result);
   };
 
@@ -62,13 +71,38 @@ const Crowdfundview = () => {
     if (isInitialized) {
       RetrieveCrowdfund(id).then((res) => {
         console.log(res);
+        const currentUser = Moralis.User.current();
+        if (currentUser) {
+          setCurrentUserAddress(currentUser.attributes.ethAddress);
+        }
+
         setCrowdfund(res);
       });
     }
   }, [isInitialized]);
 
-  const GridItemHeadlineBlock = () => (
+  const VidPreview = () => (
     <Box>
+      <iframe
+        width="300"
+        height="300"
+        src={
+          'https://www.youtube.com/embed/' +
+          crowdfund.attributes.youtube.substring(
+            crowdfund.attributes.youtube.length - 11,
+            crowdfund.attributes.youtube.length,
+          )
+        }
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </Box>
+  );
+
+  const GridItemHeadlineBlock = () => (
+    <Box sx={{ maxWidth: 600 }}>
       <Box
         component={Typography}
         fontWeight={700}
@@ -100,15 +134,188 @@ const Crowdfundview = () => {
       </Typography>
 
       <Typography
+        variant={'subtitle2'}
+        component={'p'}
+        color={'textSecondary'}
+        data-aos={isMd ? 'fade-right' : 'fade-up'}
+      >
+        {crowdfund.attributes.name
+          ? 'By ' + crowdfund.attributes.name
+          : 'By anonymous'}
+      </Typography>
+
+      <Typography
+        variant={'subtitle2'}
+        component={'p'}
+        color={'textSecondary'}
+        data-aos={isMd ? 'fade-right' : 'fade-up'}
+      >
+        {crowdfund.attributes.city ? crowdfund.attributes.city : ''}
+      </Typography>
+
+      <Typography
+        variant={'subtitle2'}
+        component={'p'}
+        color={'textSecondary'}
+        data-aos={isMd ? 'fade-right' : 'fade-up'}
+      >
+        {crowdfund.attributes.country ? crowdfund.attributes.country : ''}
+      </Typography>
+
+      <Typography
         variant={'h6'}
         component={'p'}
         color={'textSecondary'}
         data-aos={isMd ? 'fade-right' : 'fade-up'}
+        minHeight={290}
       >
         {crowdfund.attributes.description
           ? crowdfund.attributes.description
           : ''}
       </Typography>
+
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          {' '}
+          <Box marginLeft={10} minWidth={isMd ? '400px' : '200px'}>
+            <CountdownTimer initialValues={crowdfund.attributes} />
+          </Box>
+          <Box margin={5}>
+            <Formik
+              initialValues={{
+                amount: '0',
+                receiver: crowdfund.attributes.address,
+                contractAddress: '',
+                comment: '',
+                sender: currentUserAddress ? currentUserAddress : '',
+                name: 'anonymous',
+                submitComment: false,
+              }}
+              onSubmit={donateERC20}
+              validateOnBlur={false}
+              validateOnChange={false}
+              enableReinitialize
+            >
+              {({ setFieldValue }) => (
+                <Form autoComplete="off" noValidate>
+                  <Stack direction="row" spacing={2}>
+                    <Item>
+                      <Typography
+                        variant={'subtitle2'}
+                        sx={{ marginBottom: 2 }}
+                      >
+                        Amount
+                      </Typography>
+                      <TextField
+                        sx={{ minWidth: 200 }}
+                        label="amount"
+                        variant="outlined"
+                        name={'amount'}
+                        fullWidth
+                        onChange={(event) => {
+                          setFieldValue('amount', event.currentTarget.value);
+                        }}
+                      />
+                    </Item>
+
+                    <Item>
+                      <Typography
+                        variant={'subtitle2'}
+                        sx={{ marginBottom: 2 }}
+                      >
+                        Token
+                      </Typography>
+                      <Field
+                        sx={{ minWidth: 200 }}
+                        label="contractAddress"
+                        name={'contractAddress'}
+                        as={Select}
+                        type="select"
+                      >
+                        {userTokens.map((token, i) => (
+                          <MenuItem
+                            key={token.token_address + i}
+                            value={token.token_address}
+                          >
+                            {token.name}
+                          </MenuItem>
+                        ))}
+                      </Field>
+                    </Item>
+                    <Box sx={{ backgroundColor: 'transparent' }}>
+                      <Button
+                        size={'large'}
+                        sx={{ marginTop: 4 }}
+                        variant={'contained'}
+                        type={'submit'}
+                      >
+                        Donate
+                      </Button>
+                    </Box>
+                  </Stack>
+
+                  <Stack
+                    alignItems="left"
+                    sx={{ minWidth: 550, marginTop: 5 }}
+                    spacing={2}
+                  >
+                    <Item>
+                      <Typography
+                        variant={'subtitle2'}
+                        sx={{ marginBottom: 2 }}
+                      >
+                        Include Comment?
+                        <Field
+                          label="Remember Me"
+                          name="rememberMe"
+                          type="checkbox"
+                          component={Switch}
+                          onChange={(event) => {
+                            if (event.target.checked) {
+                              setFieldValue('submitComment', true);
+                            } else {
+                              setFieldValue('submitComment', false);
+                            }
+                          }}
+                        />
+                      </Typography>
+
+                      <TextField
+                        sx={{ minWidth: 500 }}
+                        label="comment"
+                        variant="outlined"
+                        name={'comment'}
+                        multiline
+                        rows={3}
+                        onChange={(event) => {
+                          setFieldValue('comment', event.currentTarget.value);
+                        }}
+                      />
+                      <Typography
+                        variant={'subtitle2'}
+                        sx={{ marginBottom: 2 }}
+                      >
+                        Include Name?
+                      </Typography>
+                      <TextField
+                        sx={{ width: 200 }}
+                        label="name"
+                        variant="outlined"
+                        defaultValue={'anonymous'}
+                        name={'name'}
+                        fullWidth
+                        onChange={(event) => {
+                          setFieldValue('name', event.currentTarget.value);
+                        }}
+                      />
+                    </Item>
+                  </Stack>
+                </Form>
+              )}
+            </Formik>
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 
@@ -140,6 +347,7 @@ const Crowdfundview = () => {
                     : ''
                 }
               ></Box>
+              {crowdfund.attributes.youtube ? <VidPreview /> : ''}
 
               <Typography
                 textAlign={'center'}
@@ -164,87 +372,49 @@ const Crowdfundview = () => {
       {crowdfund && (
         <Container>
           <Box>
-            <Grid container spacing={4}>
+            <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <Box width={1} height="75%" display="flex" alignItems="center">
+                <Box width={1} height="100%" display="flex" alignItems="center">
                   <GridItemHeadlineBlock />
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Box width={1} height="100%" display="flex" alignItems="center">
+                <Box width={1} height="50%" display="flex" alignItems="center">
                   <GridItemReviewBlock />
                 </Box>
               </Grid>
-              <Formik
-                initialValues={{
-                  amount: '0',
-                  receiver: crowdfund.attributes.address,
-                  contractAddress: '',
-                }}
-                onSubmit={donateERC20}
-                validateOnBlur={false}
-                validateOnChange={false}
-                enableReinitialize
-              >
-                {({ setFieldValue }) => (
-                  <Form autoComplete="off" noValidate>
-                    <Stack direction="row" spacing={2}>
-                      <Item>
-                        <Typography
-                          variant={'subtitle2'}
-                          sx={{ marginBottom: 2 }}
-                        >
-                          Amount
-                        </Typography>
-                        <TextField
-                          sx={{ minWidth: 200 }}
-                          label="amount"
-                          variant="outlined"
-                          name={'amount'}
-                          fullWidth
-                          onChange={(event) => {
-                            setFieldValue('amount', event.currentTarget.value);
-                          }}
-                        />
-                      </Item>
-
-                      <Item>
-                        <Typography
-                          variant={'subtitle2'}
-                          sx={{ marginBottom: 2 }}
-                        >
-                          Token
-                        </Typography>
-                        <Field
-                          sx={{ minWidth: 200 }}
-                          label="contractAddress"
-                          name={'contractAddress'}
-                          as={Select}
-                          type="select"
-                        >
-                          {userTokens.map((token, i) => (
-                            <MenuItem
-                              key={token.token_address + i}
-                              value={token.token_address}
-                            >
-                              {token.name}
-                            </MenuItem>
-                          ))}
-                        </Field>
-                        <Button
-                          size={'large'}
-                          sx={{ marginLeft: 5, maxHeight: 40 }}
-                          variant={'contained'}
-                          type={'submit'}
-                        >
-                          Donate
-                        </Button>
-                      </Item>
-                    </Stack>
-                  </Form>
-                )}
-              </Formik>
             </Grid>
+
+            <Stack spacing={100} direction="row">
+              <Box>
+                <Typography textAlign={'left'} variant={'h6'}>
+                  Latest Comments
+                </Typography>
+              </Box>
+              <Box>
+                {' '}
+                <Typography textAlign={'right'} variant={'h6'}>
+                  Latest Updates
+                </Typography>
+              </Box>
+            </Stack>
+
+            <Stack spacing={2} marginTop={20} direction="row">
+              <Item>
+                <Box height="50%" display="flex" alignItems="center">
+                  {crowdfund.attributes && (
+                    <CommentView address={crowdfund.attributes.address} />
+                  )}
+                </Box>
+              </Item>
+              <Item>
+                <Box height="50%" display="flex" alignItems="center">
+                  {crowdfund.attributes && (
+                    <CommentView address={crowdfund.attributes.address} />
+                  )}
+                </Box>
+              </Item>
+            </Stack>
 
             <Typography textAlign={'center'} variant={'h6'} sx={{ margin: 2 }}>
               Latest Donations

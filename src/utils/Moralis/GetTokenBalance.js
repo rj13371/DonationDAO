@@ -15,7 +15,7 @@ export default function GetTokenBalance({ address }) {
 
   useEffect(async () => {
     if (isInitialized) {
-      const options = { chain: 'rinkeby', address: address };
+      const options = { chain: 'mumbai', address: address };
       const balances = await Moralis.Web3API.account.getTokenBalances(options);
       console.log(balances);
       setBalances(balances);

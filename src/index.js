@@ -4,17 +4,21 @@ import { MoralisProvider } from 'react-moralis';
 import App from './App';
 import { CreateCrowdfundProvider } from './context/CreateCrowdfundContext';
 import { UserTokenListProvider } from './context/UserTokenListContext';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DateAdapter from '@mui/lab/AdapterDateFns';
 
 ReactDOM.render(
   <MoralisProvider
     appId="wsGVEzKZ1GNwjpZ6wBHgyTUKSaV1OsuolKBwElFB"
     serverUrl="https://hqfkmm7evmhi.usemoralis.com:2053/server"
   >
-    <UserTokenListProvider>
-      <CreateCrowdfundProvider>
-        <App />
-      </CreateCrowdfundProvider>
-    </UserTokenListProvider>
+    <LocalizationProvider dateAdapter={DateAdapter}>
+      <UserTokenListProvider>
+        <CreateCrowdfundProvider>
+          <App />
+        </CreateCrowdfundProvider>
+      </UserTokenListProvider>
+    </LocalizationProvider>
   </MoralisProvider>,
   document.getElementById('root'),
 );
