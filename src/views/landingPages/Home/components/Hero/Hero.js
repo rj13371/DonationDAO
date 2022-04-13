@@ -118,7 +118,7 @@ const Hero = () => {
             width={'100%'}
             maxHeight={600}
           >
-            <img src={logo} height={500} width={500} />
+            <img src={logo} height={isMd ? 500 : 350} />
           </Box>
         </Box>
       </Grid>

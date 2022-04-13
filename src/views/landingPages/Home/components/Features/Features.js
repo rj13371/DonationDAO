@@ -69,6 +69,12 @@ const Features = () => {
                 <Grid item xs={12} sm={6} md={4} key={item.id}>
                   <Box
                     onClick={() => handleClick(`${item.id}`)}
+                    sx={{
+                      cursor: 'pointer',
+                      '&:hover': {
+                        backgroundColor: theme.palette.grey[200],
+                      },
+                    }}
                     component={Card}
                     padding={4}
                     borderRadius={4}

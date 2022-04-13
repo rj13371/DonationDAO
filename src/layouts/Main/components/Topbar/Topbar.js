@@ -6,6 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import logo from 'svg/logos/logo.png';
 import Login from 'utils/Moralis/Login';
+import Button from '@mui/material/Button';
 
 const Topbar = ({ themeMode, themeToggler }) => {
   const theme = useTheme();
@@ -78,15 +79,17 @@ const Topbar = ({ themeMode, themeToggler }) => {
             )}
           </IconButton>
         </Box>
-        <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
-          <Box marginX={2}>
+        <Box sx={{ display: { md: 'flex', xs: 'flex' } }} alignItems={'center'}>
+          <Box sx={{ marginRight: 2 }}>
             <Link
               underline="none"
               component="a"
               href="/docs-introduction"
               color="textPrimary"
             >
-              Dashboard
+              <Button variant="contained" color="primary" size="large">
+                Dashboard
+              </Button>
             </Link>
           </Box>
           <Box>
