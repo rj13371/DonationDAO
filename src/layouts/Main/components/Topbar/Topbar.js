@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import logo from 'svg/logos/logo.png';
 import Login from 'utils/Moralis/Login';
 import Button from '@mui/material/Button';
+import Searchbar from '../Searchbar/Searchbar';
 
 const Topbar = ({ themeMode, themeToggler }) => {
   const theme = useTheme();
